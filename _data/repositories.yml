@@ -1,14 +1,10 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - miyaliao
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - miyaliao/SDTI
+  - miyaliao/Chinese_Chess_Game
+  - miyaliao/STA323
+
