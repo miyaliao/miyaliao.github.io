@@ -1,19 +1,20 @@
 cv:
   name: Miaoyi Liao
-  label: Undergraduate Student in Data Science and Big Data Technology
+  headline: Undergraduate Student in Data Science and Big Data Technology
   email: 12310441@mail.sustech.edu.cn
   location: Shenzhen, China
-  image: ""
-  summary: Undergraduate student in Data Science and Big Data Technology at Southern University of Science and Technology (SUSTech), with previous training in Clinical Medicine. Research interests include Medical AI, LLM agents, trustworthy machine learning, and knowledge graphs.
 
   sections:
+    Summary:
+      - Undergraduate student in Data Science and Big Data Technology at Southern University of Science and Technology (SUSTech), with previous training in Clinical Medicine. Research interests include Medical AI, LLM agents, trustworthy machine learning, and knowledge graphs.
+
     Education:
       - institution: Southern University of Science and Technology
         location: Shenzhen, China
         area: Data Science and Big Data Technology
-        studyType: Bachelor student
-        start_date: 2023
-        end_date: Present
+        degree: Bachelor student
+        start_date: 2023-09
+        end_date: present
         summary: Expected March 2028
         highlights:
           - Previous training in Clinical Medicine, 2023-2025.
@@ -24,7 +25,7 @@ cv:
         position: Undergraduate Researcher
         location: Shenzhen, China
         start_date: 2026-02
-        end_date: Present
+        end_date: present
         summary: "Supervised by Prof. Guanhua Chen. Topic: Medical AI Agents."
         highlights:
           - Converted PrimeKG from CSV files into a Neo4j knowledge graph to support structured medical knowledge retrieval and Cypher-based querying.
@@ -56,52 +57,34 @@ cv:
           - Responsible for UI design, piece-rule logic, and the replay module; **selected as one of two showcased projects in a class of 150+ students**.
 
     Honors and Awards:
-      - title: Outstanding Student Scholarship (Top 3%)
-        date: "2024-2025"
-      - title: First Prize in National Undergraduate Mathematical Contest in Modeling (Provincial Level)
-        date: 2025
-      - title: Silver Medal, iGEM (International Genetically Engineered Machine Competition)
-        date: 2025
-      - title: First Prize in Undergraduate Basic Medical Innovation Competition (University Level)
+      - name: Outstanding Student Scholarship (Top 3%)
+        date: 2025-06
+      - name: First Prize in National Undergraduate Mathematical Contest in Modeling (Provincial Level)
+        date: 2025-01
+      - name: Silver Medal, iGEM (International Genetically Engineered Machine Competition)
+        date: 2025-01
+      - name: First Prize in Undergraduate Basic Medical Innovation Competition (University Level)
         date: 2024-05
-      - title: Outstanding Student Representative, SUSTech
+      - name: Outstanding Student Representative, SUSTech
         date: 2024-05
-      - title: Outstanding Student Leader, SUSTech
-        date: 2023
+      - name: Outstanding Student Leader, SUSTech
+        date: 2023-01
 
     Skills:
-      - name: Programming
-        level: Advanced
-        keywords:
-          - Python
-          - Java
-          - SQL/Cypher
+      - label: Programming
+        details: Python, Java, SQL/Cypher
 
-      - name: Machine Learning / Data Analysis
-        keywords:
-          - pandas
-          - NumPy
-          - statsmodels
+      - label: Machine Learning / Data Analysis
+        details: pandas, NumPy, statsmodels
 
-      - name: Knowledge Graph / Database
-        keywords:
-          - Neo4j
-          - Knowledge Graph Construction
-          - Cypher Querying
+      - label: Knowledge Graph / Database
+        details: Neo4j, Knowledge Graph Construction, Cypher Querying
 
-      - name: LLM / Agent Systems
-        keywords:
-          - ReAct prompting
-          - DashScope API
-          - Neo4j-grounded agent workflows
-          - benchmark and evaluation pipelines
+      - label: LLM / Agent Systems
+        details: ReAct prompting, DashScope API, Neo4j-grounded agent workflows, benchmark and evaluation pipelines
 
-      - name: Tools
-        keywords:
-          - Git
-          - Linux
-          - Docker
-          - LaTeX
+      - label: Tools
+        details: Git, Linux, Docker, LaTeX
 
     Languages:
       - name: Chinese

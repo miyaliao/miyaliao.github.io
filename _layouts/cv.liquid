@@ -71,10 +71,10 @@ layout: default
                   <td class="p-1 pl-2 font-weight-light">{{ cv.name }}</td>
                 </tr>
               {% endif %}
-              {% if cv.label %}
+              {% if cv.label or cv.headline %}
                 <tr>
                   <td class="p-1 pr-2 font-weight-bold"><b>Professional Title</b></td>
-                  <td class="p-1 pl-2 font-weight-light">{{ cv.label }}</td>
+                <td class="p-1 pl-2 font-weight-light">{{ cv.label | default: cv.headline }}</td>
                 </tr>
               {% endif %}
               {% if cv.email %}
@@ -113,10 +113,27 @@ layout: default
         {% endif %}
 
         <!-- Summary -->
-        {% if cv.summary %}
+        {% assign summary_entries = cv.sections.Summary | default: cv.sections.summary %}
+        {% if cv.summary or summary_entries %}
           <div class="card mt-3 p-3">
             <h3 class="card-title font-weight-medium">Professional Summary</h3>
-            <p>{{ cv.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+            {% if cv.summary %}
+              <p>{{ cv.summary | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+            {% else %}
+              {% capture summary_text %}
+                {% for entry in summary_entries %}
+                  {% if entry.bullet %}
+                    {{ entry.bullet }}
+                  {% elsif entry.text %}
+                    {{ entry.text }}
+                  {% else %}
+                    {{ entry }}
+                  {% endif %}
+                  {% unless forloop.last %}<br />{% endunless %}
+                {% endfor %}
+              {% endcapture %}
+              <p>{{ summary_text | markdownify | remove: '<p>' | remove: '</p>' }}</p>
+            {% endif %}
           </div>
         {% endif %}
 
@@ -143,7 +160,7 @@ layout: default
           {% assign section_entries = section_pair[1] %}
 
           {% comment %} Skip Experience and Volunteer as we've already processed them combined {% endcomment %}
-          {% if section_title == 'Experience' or section_title == 'Volunteer' %}
+          {% if section_title == 'Experience' or section_title == 'Volunteer' or section_title == 'Summary' or section_title == 'summary' %}
             {% continue %}
           {% endif %}
 
