@@ -51,9 +51,9 @@ cv:
           - Prepared RL training data and implemented GRPO training scripts, improving final validation accuracy from 38.5% to 46.70% (+8.20 percentage points).
 
       - name: Chinese Chess Game System
-        summary: Course Project | Selected as one of two showcased projects in a class of 150+ students
+        summary: <span class="text-nowrap">Course Project</span> | Selected as one of two showcased projects in a class of 150+ students
         highlights:
-          - Developed a Chinese Chess application with account login, save/load, replay, and four gameplay modes: timed, human-vs-AI, hot-seat, and classic endgames.
+          - "Developed a Chinese Chess application with account login, save/load, replay, and four gameplay modes: timed, human-vs-AI, hot-seat, and classic endgames."
           - Designed the user interface and implemented core piece-rule logic, greedy algorithm-based AI gameplay, and replay functionality.
 
       - name: Optimization of NIPT Testing Timing and Fetal Chromosomal Abnormality Diagnosis
