@@ -43,18 +43,24 @@ cv:
           - Ran ablation studies on gradient processing, perturbation layer placement, and backpropagation scope; identified gradient clearing as harmful and validated auxiliary-head initialization, improving AUROC from 91.84 to 92.58 and lowering FPR@95 from 26.29 to 24.14.
 
     Projects:
-      - name: Optimization of NIPT Testing Timing and Fetal Chromosomal Abnormality Diagnosis
-        summary: Mathematical Contest in Modeling project; **First Prize (Provincial Level)**.
+      - name: Qwen3-Math RL Pipeline
+        summary: LLM Course Mid-term Project | [GitHub](https://github.com/miyaliao/Qwen3-Math-RL-Pipeline)
         highlights:
-          - Applied a linear mixed-effects model with logit transformation and random intercepts to characterize the relationship between gestational age, BMI, and fetal Y-chromosome concentration, achieving R^2 = 0.789.
-          - Used K-means clustering, probability-threshold modeling, and risk / chance-constrained optimization to recommend BMI-specific NIPT testing windows.
-          - Built a logistic regression classifier for fetal chromosomal abnormality detection with chromosome concentration, GC-content, and Z-score features, achieving AUC = 0.822 with robustness validated by bootstrap and sensitivity analysis.
+          - Built an end-to-end optimization pipeline for Qwen3-Math, covering math data cleaning, prompt-completion formatting, LoRA-based supervised fine-tuning, inference evaluation, and RL training preparation.
+          - Implemented local multi-pass evaluation to compute `pass@1`, `pass@8`, and `correct_ratio`, then stratified samples by difficulty to identify unstable reasoning cases suitable for reinforcement learning.
+          - Prepared RL training data and implemented GRPO training scripts, improving final validation accuracy from 38.5% to 46.70% (+8.20 percentage points).
 
       - name: Chinese Chess Game System
-        summary: Course project.
+        summary: Course Project | Selected as one of two showcased projects in a class of 150+ students
         highlights:
-          - "Developed a Chinese Chess application with account login, save/load, replay, and four gameplay modes: timed, human-vs-AI (greedy algorithm), hot-seat, and classic endgames."
-          - Responsible for UI design, piece-rule logic, and the replay module; **selected as one of two showcased projects in a class of 150+ students**.
+          - Developed a Chinese Chess application with account login, save/load, replay, and four gameplay modes: timed, human-vs-AI, hot-seat, and classic endgames.
+          - Designed the user interface and implemented core piece-rule logic, greedy algorithm-based AI gameplay, and replay functionality.
+
+      - name: Optimization of NIPT Testing Timing and Fetal Chromosomal Abnormality Diagnosis
+        summary: Mathematical Contest in Modeling Project | First Prize (Provincial Level)
+        highlights:
+          - Modeled the relationship among gestational age, BMI, and fetal Y-chromosome concentration using a linear mixed-effects model with logit transformation, achieving R^2 = 0.789.
+          - Applied clustering, constrained optimization, and logistic regression to recommend BMI-specific NIPT testing windows and detect fetal chromosomal abnormalities, achieving AUC = 0.822.
 
     Honors and Awards:
       - name: Outstanding Student Scholarship (Top 3%)
