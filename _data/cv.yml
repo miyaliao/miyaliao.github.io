@@ -50,6 +50,14 @@ cv:
           - Implemented local multi-pass evaluation to compute `pass@1`, `pass@8`, and `correct_ratio`, then stratified samples by difficulty to identify unstable reasoning cases suitable for reinforcement learning.
           - Prepared RL training data and implemented GRPO training scripts, improving final validation accuracy from 38.5% to 46.70% (+8.20 percentage points).
 
+      - name: Evidence Chain Verification System for Research Agents
+        summary: LLM Course Final Project | DeepScientist Extension
+        highlights:
+          - Extended DeepScientist with a citation fact-checking pipeline for research-agent reports, including PDF claim extraction, evidence tracking, literature API verification, and auditable report generation.
+          - Implemented a Semantic Scholar -> arXiv -> Crossref fallback verifier and structured claim-verification workflow to trace claims back to external evidence.
+          - Added framework-level execution constraints to prevent LLM agents from bypassing mandatory scoring, rendering, artifact recording, and memory-writing steps.
+          - Validated the system with 139 automated tests and 6 real multi-domain quests, covering 144 claim-verification calls and achieving 36/36 mandatory tool-call compliance.
+
       - name: Chinese Chess Game System
         summary: <span class="text-nowrap">Course Project</span> | Selected as one of two showcased projects in a class of 150+ students
         highlights:
