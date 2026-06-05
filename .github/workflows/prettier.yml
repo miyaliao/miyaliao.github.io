@@ -12,27 +12,61 @@ on:
 
 jobs:
   check:
-    # available images: https://github.com/actions/runner-images#available-images
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Setup Node.js ⚙️
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
         uses: actions/setup-node@v4
-      - name: Install Prettier 💾
+
+      - name: Install Prettier
         run: npm install --save-dev --save-exact prettier @shopify/prettier-plugin-liquid
-      - name: Prettier Check 🔎
-        id: prettier
-        run: npx prettier . --check
-      - name: Create diff 📝
-        # https://docs.github.com/en/actions/learn-github-actions/expressions#failure
-        if: ${{ failure() }}
+
+      - name: Collect changed files
+        id: changed-files
+        shell: bash
         run: |
-          npx prettier . --write
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            files=$(git diff --name-only --diff-filter=ACMRT "origin/${{ github.base_ref }}...HEAD")
+          elif git rev-parse HEAD^ >/dev/null 2>&1; then
+            files=$(git diff --name-only --diff-filter=ACMRT HEAD^ HEAD)
+          else
+            files=$(git ls-files)
+          fi
+
+          {
+            echo "files<<EOF"
+            echo "$files"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Prettier check
+        id: prettier
+        shell: bash
+        run: |
+          if [[ -z "${{ steps.changed-files.outputs.files }}" ]]; then
+            echo "No changed files to check."
+            exit 0
+          fi
+
+          printf '%s\n' "${{ steps.changed-files.outputs.files }}" | xargs -d '\n' npx prettier --check --ignore-unknown
+
+      - name: Create diff
+        if: ${{ failure() }}
+        shell: bash
+        run: |
+          if [[ -n "${{ steps.changed-files.outputs.files }}" ]]; then
+            printf '%s\n' "${{ steps.changed-files.outputs.files }}" | xargs -d '\n' npx prettier --write --ignore-unknown
+          fi
+
           git diff -- . ':(exclude)package-lock.json' ':(exclude)package.json' > diff.txt
           npm install -g diff2html-cli
           diff2html -i file -s side -F diff.html -- diff.txt
-      - name: Upload html diff ⬆️
+
+      - name: Upload html diff
         id: artifact-upload
         if: ${{ failure() && steps.prettier.conclusion == 'failure' }}
         uses: actions/upload-artifact@v4
@@ -40,7 +74,8 @@ jobs:
           name: HTML Diff
           path: diff.html
           retention-days: 7
-      - name: Dispatch information to repository 🗣️
+
+      - name: Dispatch information to repository
         if: ${{ failure() && steps.prettier.conclusion == 'failure' && github.event_name == 'pull_request' }}
         uses: peter-evans/repository-dispatch@v2
         with:
